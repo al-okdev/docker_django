@@ -1,0 +1,91 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api/v1
+
+###
+
+# создание продукта +
+POST http://127.0.0.1:8000/api/v1/products/
+Content-Type: application/json
+
+{
+  "title": "Вишня",
+  "description": "Мороженная"
+}
+
+###
+
+# получение продуктов +
+GET http://127.0.0.1:8000/api/v1/products/
+Content-Type: application/json
+
+###
+
+# обновление продукта +
+PATCH http://127.0.0.1:8000/api/v1/products/7/
+Content-Type: application/json
+
+{
+  "description": "Сильно мороженная"
+}
+
+###
+
+# удаление продукта +
+DELETE http://127.0.0.1:8000/api/v1/products/7/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию +
+GET http://127.0.0.1:8000/api/v1/products/?search=сочная
+Content-Type: application/json
+
+###
+
+# создание склада +
+POST http://127.0.0.1:8000/api/v1/stocks/
+Content-Type: application/json
+
+{
+  "address": "мой адрес 7",
+  "positions": [
+    {
+      "product": 8,
+      "quantity": 55,
+      "price": 155
+    },
+    {
+      "product": 5,
+      "quantity": 65,
+      "price": 165
+    }
+  ]
+}
+
+###
+
+# обновляем записи на складе
+PATCH http://127.0.0.1:8000/api/v1/stocks/15/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 4,
+      "quantity": 10,
+      "price": 10
+    },
+    {
+      "product": 5,
+      "quantity": 11,
+      "price": 11
+    }
+  ]
+}
+
+###
+
+# поиск складов, где есть определенный продукт
+GET http://127.0.0.1:8000/api/v1/stocks/?products_title=груша&products_description=со
+Content-Type: application/json
